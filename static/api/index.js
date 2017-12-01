@@ -14,7 +14,7 @@ export function fetch(url,params){
 
 export default {
   // 项目获取
-  getItem(){
-    return fetch('/dictory')
+  addIntf(param){
+    return fetch('/addIntf', param)
   },
 }

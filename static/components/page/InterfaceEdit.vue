@@ -38,22 +38,25 @@
 </template>
 
 <script>
+import api from '../../api/index.js';
 export default {
   data() {
-    var self = this
     const checkName = function(rule,value,callback){
       if (value === '') {
         callback(new Error('请输入接口名称'));
       }else{
-        self.$store.dispatch('selectInterfaceByName',{'name':value,'belong':self.ruleForm.belong})
-        .then(()=>{
-          if(self.use){
-            callback();
-          }else{
-            callback(new Error('该接口名称已在本项目存在'))
-          }
-        })
+        callback()
       }
+      // else{
+      //   self.$store.dispatch('selectInterfaceByName',{'name':value,'belong':self.ruleForm.belong})
+      //   .then(()=>{
+      //     if(self.use){
+      //       callback();
+      //     }else{
+      //       callback(new Error('该接口名称已在本项目存在'))
+      //     }
+      //   })
+      // }
     };
     return {
       activeName:'first',
@@ -96,28 +99,28 @@ export default {
   },
   methods:{
     submitForm(formName) {
-      const self = this
-      self.$refs[formName].validate((valid) => {
+      const self = this;
+      this.$refs[formName].validate((valid) => {
         if (valid) {
-          self.$store.dispatch('newInterface',{
+          console.log(123)
+          api.addIntf({
             'name':self.ruleForm.name,
             'type':self.ruleForm.type,
             'desc':self.ruleForm.desc,
             'path':self.ruleForm.path,
-            'staff':self.ruleForm.staff,
-            'tag':self.ruleForm.tag,
-            'belong':self.ruleForm.belong
-          }).then(()=>{
-            if(self.newInterfaceMsg == 'success'){
-              self.$message.success('新建接口成功')
-              self.resetForm('ruleForm')
-            }else{
-              const h = self.$createElement;
-              self.$notify({
-                title: '失败提示',
-                message: h('p', { style: 'color: red'}, '新建接口失败')
-              });
-            }
+            'staff':self.ruleForm.staff
+          }).then((res)=>{
+            console.log(res)
+            // if(self.newInterfaceMsg == 'success'){
+            //   self.$message.success('新建接口成功')
+            //   self.resetForm('ruleForm')
+            // }else{
+            //   const h = self.$createElement;
+            //   self.$notify({
+            //     title: '失败提示',
+            //     message: h('p', { style: 'color: red'}, '新建接口失败')
+            //   });
+            // }
           })
         } else {
           return false;

@@ -22,7 +22,13 @@ log4js.configure({
     }
 });
 
-
+exports.database = {
+    DATABASE: 'Koa',
+    USERNAME: 'root',
+    PASSWORD: 'xiangyu',
+    PORT: '3306',
+    HOST: '127.0.0.1'
+}
 
 exports.common = log4js.getLogger('common');
 exports.error = log4js.getLogger('error');

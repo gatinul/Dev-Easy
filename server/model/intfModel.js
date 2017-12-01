@@ -9,6 +9,12 @@ const Intf = {
       let result = await db.insertData('easy_interface', model)
       return result
     },
+    async isExist() {
+      let _sql = `
+          SELECT * FROM easy_interface`
+      let result = await db.query(_sql)
+      return result
+    },
 }
 
 module.exports = Intf;

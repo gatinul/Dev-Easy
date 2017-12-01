@@ -113,17 +113,16 @@ export default {
             'tag':self.ruleForm.tag,
             'staff':self.ruleForm.staff
           }).then((res)=>{
-            console.log(res)
-            // if(self.newInterfaceMsg == 'success'){
-            //   self.$message.success('新建接口成功')
-            //   self.resetForm('ruleForm')
-            // }else{
-            //   const h = self.$createElement;
-            //   self.$notify({
-            //     title: '失败提示',
-            //     message: h('p', { style: 'color: red'}, '新建接口失败')
-            //   });
-            // }
+            if(res.success){
+              self.$message.success('新建接口成功')
+              self.resetForm('ruleForm')
+            }else{
+              const h = self.$createElement;
+              self.$notify({
+                title: '失败提示',
+                message: h('p', { style: 'color: red'}, '新建接口失败')
+              });
+            }
           })
         } else {
           return false;

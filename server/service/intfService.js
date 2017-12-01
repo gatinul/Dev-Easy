@@ -10,8 +10,7 @@ const Intf = {
    * @param {object} formData 
    */
   async insertIntf(data) {
-    let result = intfModel.insertIntf(data)
-    console.log(result)
+    let result = await intfModel.insertIntf(data)
     return result
   },
 }

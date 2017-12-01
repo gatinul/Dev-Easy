@@ -9,8 +9,9 @@ const Intf = {
    * 新增接口及mock数据
    * @param {object} formData 
    */
-  insertIntf(data) {
+  async insertIntf(data) {
     let result = intfModel.insertIntf(data)
+    console.log(result)
     return result
   },
 }

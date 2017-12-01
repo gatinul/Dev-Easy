@@ -18,14 +18,20 @@
               <el-option label="POST" value="POST"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="接口描述" prop="desc">
-            <el-input class="smInput" type="textarea" v-model="ruleForm.desc"></el-input>
+          <el-form-item label="返回数据" prop="result">
+            <el-input class="smInput" type="textarea" v-model="ruleForm.result"></el-input>
           </el-form-item>
-          <el-form-item label="接口路径" prop="path">
-            <el-input class="smInput" v-model="ruleForm.path"></el-input>
+          <el-form-item label="接口描述" prop="desc">
+            <el-input class="smInput" v-model="ruleForm.desc"></el-input>
           </el-form-item>
           <el-form-item label="负责人" prop="staff">
             <el-input class="smInput" v-model="ruleForm.staff"></el-input>
+          </el-form-item>
+          <el-form-item label="数据类型" prop="tag">
+            <el-select v-model="ruleForm.tag" placeholder="请选择">
+              <el-option label="手动" value="0"></el-option>
+              <el-option label="mock" value="1"></el-option>
+            </el-select>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
@@ -64,11 +70,10 @@ export default {
       ruleForm:{
         name:'',
         type:'',
+        result:'',
         desc:'',
-        path:'',
         staff:'',
-        tag:'',
-        belong:''
+        tag:''
       },
       rules:{
         name: [
@@ -77,20 +82,17 @@ export default {
         type: [
           { required: true, message: '请选择接口类型', trigger: 'blur' }
         ],
+        result: [
+          { required: true, message: '请填写返回数据', trigger: 'blur' }
+        ],
         desc: [
           { required: true, message: '请填写接口描述', trigger: 'blur' }
-        ],
-        path: [
-          { required: true, message: '请填写接口路径', trigger: 'blur' }
         ],
         staff: [
           { required: true, message: '请填写负责人', trigger:'blur' }
         ],
         tag: [
-          { required: true, message: '请选择接口类别', trigger:'blur' }
-        ],
-        belong: [
-          { required: true, message: '请选择所属项目', trigger:'blur'}
+          { required: true, message: '请选择返回数据类型', trigger:'blur' }
         ]
       }
     }
@@ -106,8 +108,9 @@ export default {
           api.addIntf({
             'name':self.ruleForm.name,
             'type':self.ruleForm.type,
+            'result':self.ruleForm.result,
             'desc':self.ruleForm.desc,
-            'path':self.ruleForm.path,
+            'tag':self.ruleForm.tag,
             'staff':self.ruleForm.staff
           }).then((res)=>{
             console.log(res)

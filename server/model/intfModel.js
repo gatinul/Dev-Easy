@@ -1,4 +1,4 @@
-const db = require('../utils/db.config.js')
+const db = require('../db.config.js')
 
 const Intf = {
     /**
@@ -6,9 +6,8 @@ const Intf = {
      * @param {object} model 
      */
     async insertIntf(model) {
-        console.log(`创建时间：${model.create_time}`)
-        let result = await db.insertData('easy_interface', model)
-        return result
+      let result = await db.insertData('easy_interface', model)
+      return result
     },
 }
 

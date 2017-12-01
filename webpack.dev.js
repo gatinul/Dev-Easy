@@ -14,6 +14,11 @@ module.exports = merge(common, {
       {test:/\.js$/,exclude:/node_modules/,loader:'babel-loader'},
       {test:/\.vue$/,loader:'vue-loader'},
       {test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader'},
+      {
+        test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+        exclude: /favicon\.png$/,
+        loader:'url-loader?limit:10000'
+      }
     ],
   },
   devtool: 'source-map',

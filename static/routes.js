@@ -16,11 +16,16 @@ const Login = resolve => {
 }
 
 const Test = resolve => {
-    require.ensure(['./components/page/Test.vue'],()=>{
-      resolve(require('./components/page/Test.vue'))
-    },'test')
-  }
+  require.ensure(['./components/page/Test.vue'],()=>{
+    resolve(require('./components/page/Test.vue'))
+  },'test')
+}
 
+const IntfEdit = resolve => {
+  require.ensure(['./components/page/InterfaceEdit.vue'], ()=>{
+    resolve(require('./components/page/InterfaceEdit.vue'))
+  }, 'intfEdit')
+}
 
 
 
@@ -36,6 +41,10 @@ export default new Router({
                     path: '/',
                     component: Test
                 },
+                {
+                  path: '/intfEdit',
+                  component: IntfEdit
+                }
             ]
         },
         {

@@ -3,9 +3,9 @@
     <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
       <el-submenu  index="1">
         <template slot="title"><i class="el-icon-menu"></i>Mock开发</template>
-        <el-menu-item index="vueTable">模拟界面</el-menu-item>
-        <el-menu-item index="formUpdate">接口编辑</el-menu-item>
-        <el-menu-item index="cards">接口总览</el-menu-item>
+        <el-menu-item index="mockView">模拟界面</el-menu-item>
+        <el-menu-item index="intfEdit">接口编辑</el-menu-item>
+        <el-menu-item index="intfPreview">接口总览</el-menu-item>
       </el-submenu >
     </el-menu>
 </div>

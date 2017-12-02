@@ -113,6 +113,7 @@ export default {
             'tag':self.ruleForm.tag,
             'staff':self.ruleForm.staff
           }).then((res)=>{
+            console.log(res)
             if(res.success){
               self.$message.success('新建接口成功')
               self.resetForm('ruleForm')

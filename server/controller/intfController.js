@@ -27,7 +27,8 @@ module.exports = {
       desc: req.desc,
       update_time: time.format(new Date())
     })
-    if(res){result.success = true}
-    ctx.body = res;
+    console.log(res)
+    if(res.affectedRows > 0 ){result.success = true}
+    ctx.body = result;
   },
 }
